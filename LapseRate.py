@@ -38,7 +38,7 @@ def lapse700mb(data,mills700):
 def fullOutput(output,LR700,saveName):
     output.append((saveName,LR700))                         #pull in list and append resent results to bottom
     return output
-
+site = input("Enter Site Location: ")
 dataSource = rgp.getUserInputFile("Select path to data input directory: ")
 saveData   = rgp.getUserInputTF("Do you want to save output data?")
 
@@ -70,4 +70,4 @@ TotalResults = np.array(results)                                        #Make re
 TotalResults = np.insert(TotalResults,[0],header,axis=0)                #Add the results and header to array
 print(TotalResults)
 if saveData:
-    np.savetxt("%s/LapseRates_Laramie_700mb.txt"%(savePath),TotalResults,fmt='%s',delimiter="\t\t",encoding='utf-8')
+    np.savetxt("%s/LapseRates_" + site + "_700mb.txt"%(savePath),TotalResults,fmt='%s',delimiter="\t\t",encoding='utf-8')

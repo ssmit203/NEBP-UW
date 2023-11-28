@@ -23,6 +23,7 @@ import os                                             # File reading and input
 from io import StringIO                               # Used to run strings through input/output functions
 import tkinter as tk                                  # Used to create Window Explorer
 from tkinter import filedialog, Tk                    # Used to create Window Explorer
+
 import matplotlib.gridspec as gridspec
 import metpy.calc as mpcalc
 from metpy.cbook import get_test_data

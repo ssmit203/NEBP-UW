@@ -1,4 +1,4 @@
-1# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Created on Tue Nov 23 16:12:46 2021
 
@@ -26,7 +26,21 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as md
 from datetime import datetime
 
-algFile = r"C:\Users\sasm3\OneDrive\Desktop\NEBP\Grawmet - 082423\Output - PBL_Height\PBLMethodsCSV_Laramie.txt"
+import os
+import time
+import readGrawProfile_alg as rgp
+import AlgorithmFunctions as af
+import numpy as np
+from tkinter import *
+import pandas as pd
+
+#algFile = r"C:\Users\scba228\Dropbox\RESEARCH\NEBP\Workshop\Data Analysis with Python\Sample Data Output\PBLMethodsCSV_Tolten.txt"
+site = input("Enter Site Location: ")
+dataSource = rgp.getUserInputFile("Select path to data input directory: ");
+
+algfile = dataSource + "\PBLMethodsCSV_" + site + ".txt";
+
+
 algdf = pd.read_csv(algFile,na_values="-",parse_dates=[1]) 
 
 pblData = algdf[['RI','VPT','PT','PBL [m]']].copy()
@@ -36,11 +50,11 @@ date = algdf['Launch Time']
 
 pblData = pblData.set_index(algdf['Launch Time'])
 
-day1 = datetime(2023,8,24,00,00,00)
-day2 = datetime(2023,8,24,00,00,00)
-totality = datetime(2023,8,24,21,00,00,00)
-first_contact = datetime(2023,8,24,23,00,00)
-last_contact  = datetime(2023,8,25,23,00,00)
+day1 = datetime(2020,12,14,00,00,00)
+day2 = datetime(2020,12,15,00,00,00)
+totality = datetime(2020,12,14,16,13,28,00)
+first_contact = datetime(2020,12,14,15,00,00)
+last_contact  = datetime(2020,12,14,17,30,00)
 
 def plotLines(pblData,day1,day2,totality,first_contact,last_contact):
     n=1
